@@ -1,7 +1,6 @@
 'use strict';
 
 const apiai = require('apiai');
-const config = require('./config');
 const express = require('express');
 const crypto = require('crypto'); //verifies request signature
 const bodyParser = require('body-parser');
@@ -9,6 +8,8 @@ const request = require('request');
 const app = express();
 const uuid = require('uuid');
 
+const config = require('./config');
+const webhook = require('./routes/webhook');
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -48,75 +49,11 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 
-
-
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
     language: "en",
     requestSource: "fb"
 });
 const sessionIds = new Map();
-
-// Index route
-app.get('/', function(req, res) {
-    res.send('Hello world, I am a chat bot')
-})
-
-// for Facebook verification
-app.get('/webhook/', function(req, res) {
-    console.log("request");
-    if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === config.FB_VERIFY_TOKEN) {
-        res.status(200).send(req.query['hub.challenge']);
-    } else {
-        console.error("Failed validation. Make sure the validation tokens match.");
-        res.sendStatus(403);
-    }
-})
-
-/*
- * All callbacks for Messenger are POST-ed. They will be sent to the same
- * webhook. Be sure to subscribe your app to your page to receive callbacks
- * for your page.
- * https://developers.facebook.com/docs/messenger-platform/product-overview/setup#subscribe_app
- *
- */
-app.post('/webhook/', function(req, res) {
-    var data = req.body;
-    console.log(JSON.stringify(data));
-
-    // Make sure this is a page subscription
-    if (data.object == 'page') {
-        // Iterate over each entry
-        // There may be multiple if batched
-        data.entry.forEach(function(pageEntry) {
-            var pageID = pageEntry.id;
-            var timeOfEvent = pageEntry.time;
-
-            // Iterate over each messaging event
-            pageEntry.messaging.forEach(function(messagingEvent) {
-                if (messagingEvent.optin) {
-                    receivedAuthentication(messagingEvent);
-                } else if (messagingEvent.message) {
-                    receivedMessage(messagingEvent);
-                } else if (messagingEvent.delivery) {
-                    receivedDeliveryConfirmation(messagingEvent);
-                } else if (messagingEvent.postback) {
-                    receivedPostback(messagingEvent);
-                } else if (messagingEvent.read) {
-                    receivedMessageRead(messagingEvent);
-                } else if (messagingEvent.account_linking) {
-                    receivedAccountLink(messagingEvent);
-                } else {
-                    console.log("Webhook received unknown messagingEvent: ", messagingEvent);
-                }
-            });
-        });
-
-        // Assume all went well.
-        // You must send back a 200, within 20 seconds
-        res.sendStatus(200);
-    }
-});
-
 
 function receivedMessage(event) {
 
@@ -826,34 +763,6 @@ function receivedDeliveryConfirmation(event) {
     console.log("All message before %d were delivered.", watermark);
 }
 
-/*
- * Authorization Event
- *
- * The value for 'optin.ref' is defined in the entry point. For the "Send to
- * Messenger" plugin, it is the 'data-ref' field. Read more at
- * https://developers.facebook.com/docs/messenger-platform/webhook-reference/authentication
- *
- */
-function receivedAuthentication(event) {
-    var senderID = event.sender.id;
-    var recipientID = event.recipient.id;
-    var timeOfAuth = event.timestamp;
-
-    // The 'ref' field is set in the 'Send to Messenger' plugin, in the 'data-ref'
-    // The developer can set this to an arbitrary value to associate the
-    // authentication callback with the 'Send to Messenger' click event. This is
-    // a way to do account linking when the user clicks the 'Send to Messenger'
-    // plugin.
-    var passThroughParam = event.optin.ref;
-
-    console.log("Received authentication for user %d and page %d with pass " +
-        "through param '%s' at %d", senderID, recipientID, passThroughParam,
-        timeOfAuth);
-
-    // When an authentication is received, we'll send a message back to the sender
-    // to let them know it was successful.
-    sendTextMessage(senderID, "Authentication successful");
-}
 
 /*
  * Verify that the callback came from Facebook. Using the App Secret from
@@ -864,24 +773,25 @@ function receivedAuthentication(event) {
  *
  */
 function verifyRequestSignature(req, res, buf) {
-    var signature = req.headers["x-hub-signature"];
+	var signature = req.headers["x-hub-signature"];
 
-    if (!signature) {
-        throw new Error('Couldn\'t validate the signature.');
-    } else {
-        var elements = signature.split('=');
-        var method = elements[0];
-        var signatureHash = elements[1];
+	if (!signature) {
+		throw new Error('Couldn\'t validate the signature.');
+	} else {
+		var elements = signature.split('=');
+		var method = elements[0];
+		var signatureHash = elements[1];
 
-        var expectedHash = crypto.createHmac('sha1', config.FB_APP_SECRET)
-            .update(buf)
-            .digest('hex');
+		var expectedHash = crypto.createHmac('sha1', config.FB_APP_SECRET)
+			.update(buf)
+			.digest('hex');
 
-        if (signatureHash != expectedHash) {
-            throw new Error("Couldn't validate the request signature.");
-        }
-    }
+		if (signatureHash != expectedHash) {
+			throw new Error("Couldn't validate the request signature.");
+		}
+	}
 }
+//END AUTH.JS//
 
 function isDefined(obj) {
     if (typeof obj == 'undefined') {
