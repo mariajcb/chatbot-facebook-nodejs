@@ -1,5 +1,11 @@
 var express = require('express')
 var router = express.Router()
+var receivedAccountLink = require('../messagingEvents/accountLink')
+var receivedMessage = require('../messagingEvents/message')
+var receivedDeliveryConfirmation = require('../messagingEvents/deliveryConfirmation')
+var receivedPostback = require('../messagingEvents/postback')
+var receivedMessageRead = require('../messagingEvents/messageRead')
+var receivedAuthentication = require('../messagingEvents/authentication')
 
 // for Facebook verification
 router.get('/webhook/', function(req, res) {
