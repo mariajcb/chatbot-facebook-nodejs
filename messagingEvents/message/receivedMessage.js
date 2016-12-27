@@ -1,3 +1,14 @@
+const handleEcho = require('./messageIn/echo')
+const handleQuickReply = require('./messageIn/quickReply')
+const handleMessageAttachments = require('./messageIn/messageAttachments')
+const sendToApiAi = require('./messageIn/sendToApiAi')
+const handleApiAiResponse = require('./messageOut/apiAiResponse')
+const handleApiAiAction = require('./messageOut/apiAiAction')
+const callSendAPI = require('./messageOut/callSendAPI')
+const sendEmail = require('./messageOut/sendEmail')
+// const sendMessage = require('./messageOut/sendMessage')
+
+//received message from user
 function receivedMessage(event) {
 
     var senderID = event.sender.id;
