@@ -9,8 +9,15 @@ const app = express();
 const uuid = require('uuid');
 
 const config = require('./config');
-const webhook = require('./routes/webhook');
+// const webhook = require('./routes/webhook');
 const index = require('./routes/index');
+
+var receivedAccountLink = require('./messagingEvents/accountLink')
+var receivedMessage = require('./messagingEvents/message/receivedMessage')
+var receivedDeliveryConfirmation = require('./messagingEvents/deliveryConfirmation')
+var receivedPostback = require('./messagingEvents/postback')
+var receivedMessageRead = require('./messagingEvents/messageRead')
+var receivedAuthentication = require('./messagingEvents/authentication')
 
 // app.use('/', webhook)
 
