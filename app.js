@@ -6,7 +6,6 @@ const crypto = require('crypto'); //verifies request signature
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
-const uuid = require('uuid');
 
 const config = require('./config');
 // const webhook = require('./routes/webhook');

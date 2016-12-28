@@ -8,6 +8,7 @@ const callSendAPI = require('./messageOut/callSendAPI')
 const sendEmail = require('./messageOut/sendEmail')
 const sendMessage = require('./messageOut/sendMessage')
 
+const uuid = require('uuid');
 const sessionIds = new Map();
 
 //received message from user

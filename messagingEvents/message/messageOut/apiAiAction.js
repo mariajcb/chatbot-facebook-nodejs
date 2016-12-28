@@ -1,6 +1,5 @@
-console.log('HANDLE API ACTION IS FIRING');
-
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
+  console.log('HANDLE API ACTION IS FIRING');
     switch (action) {
         case "detailed-application":
             if (isDefined(contexts[0]) && contexts[0].name == 'job_application' && contexts[0].parameters) {
