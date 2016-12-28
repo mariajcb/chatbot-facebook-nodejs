@@ -9,6 +9,7 @@ const app = express();
 const uuid = require('uuid');
 
 const config = require('./config');
+// const index = require('./routes/index');
 // const webhook = require('./routes/webhook');
 
 var receivedAccountLink = require('./messagingEvents/accountLink')
@@ -63,6 +64,12 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json())
 
+app.get('/', function(req, res) {
+    res.send('Hello world, I am a chat bot')
+})
+
+////
+
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
 	console.log("request");
@@ -84,8 +91,6 @@ app.get('/webhook/', function (req, res) {
 app.post('/webhook/', function (req, res) {
 	var data = req.body;
 	console.log(JSON.stringify(data));
-
-
 
 	// Make sure this is a page subscription
 	if (data.object == 'page') {
@@ -121,6 +126,8 @@ app.post('/webhook/', function (req, res) {
 	}
 });
 
+
+////
 
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
     language: "en",
