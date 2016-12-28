@@ -7,6 +7,11 @@ var receivedPostback = require('../messagingEvents/postback')
 var receivedMessageRead = require('../messagingEvents/messageRead')
 var receivedAuthentication = require('../messagingEvents/authentication')
 
+router.get('/test', function(req, res) {
+    console.log("made it to test route");
+    res.status(200).send("made it to test route and I feel good");
+})
+
 // for Facebook verification
 router.get('/webhook/', function(req, res) {
     console.log("request");
