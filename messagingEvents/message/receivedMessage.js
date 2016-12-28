@@ -10,7 +10,7 @@ const sendEmail = require('./messageOut/sendEmail')
 
 //received message from user
 function receivedMessage(event) {
-
+  console.log('RECEIVED MESSAGE IS FIRING');
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
