@@ -12,6 +12,8 @@ const config = require('./config');
 const webhook = require('./routes/webhook');
 const index = require('./routes/index');
 
+app.use('/', webhook)
+
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
     throw new Error('missing FB_PAGE_TOKEN');
