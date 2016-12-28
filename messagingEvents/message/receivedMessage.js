@@ -6,7 +6,7 @@ const handleApiAiResponse = require('./messageOut/apiAiResponse')
 const handleApiAiAction = require('./messageOut/apiAiAction')
 const callSendAPI = require('./messageOut/callSendAPI')
 const sendEmail = require('./messageOut/sendEmail')
-// const sendMessage = require('./messageOut/sendMessage')
+const sendMessage = require('./messageOut/sendMessage')
 
 //received message from user
 function receivedMessage(event) {
