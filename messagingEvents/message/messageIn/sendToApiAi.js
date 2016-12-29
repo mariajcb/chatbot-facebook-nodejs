@@ -1,4 +1,5 @@
 const sendMessage = require('../messageOut/sendMessage')
+const receivedMessage = require('../receivedMessage')
 const callSendAPI = require('../messageOut/callSendAPI')
 const config = require('../../../config.js');
 

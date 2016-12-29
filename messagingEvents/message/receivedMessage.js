@@ -12,6 +12,7 @@ const apiai = require('apiai');
 const config = require('../../config.js');
 const request = require('request');
 const uuid = require('uuid');
+
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 	language: "en",
 	requestSource: "fb"
