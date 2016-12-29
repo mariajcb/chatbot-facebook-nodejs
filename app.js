@@ -1,6 +1,5 @@
 'use strict';
 
-const apiai = require('apiai');
 const config = require('./config');
 const express = require('express');
 const crypto = require('crypto');
@@ -61,11 +60,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.use('/', webhook)
-
-const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
-	language: "en",
-	requestSource: "fb"
-});
 
 // const sessionIds = new Map();
 //

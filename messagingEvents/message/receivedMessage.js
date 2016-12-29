@@ -8,10 +8,16 @@ const callSendAPI = require('./messageOut/callSendAPI')
 const sendEmail = require('./messageOut/sendEmail')
 const sendMessage = require('./messageOut/sendMessage')
 
+const apiai = require('apiai');
 const config = require('../../config.js');
 const request = require('request');
 const uuid = require('uuid');
+const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
+	language: "en",
+	requestSource: "fb"
+});
 const sessionIds = new Map();
+
 
 //received message from user
 function receivedMessage(event) {
