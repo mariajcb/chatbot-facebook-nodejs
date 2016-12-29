@@ -1,5 +1,7 @@
 const sendMessage = require('../messageOut/sendMessage')
 const callSendAPI = require('../messageOut/callSendAPI')
+const config = require('../../../config.js');
+
 const request = require('request');
 
 function sendToApiAi(sender, text) {

@@ -1,5 +1,5 @@
 const request = require('request');
-
+const config = require('../../../config.js');
 /*
  * Call the Send API. The message data goes in the body. If successful, we'll
  * get the message id in a response
