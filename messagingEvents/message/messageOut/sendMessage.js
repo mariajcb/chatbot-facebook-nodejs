@@ -1,3 +1,5 @@
+const callSendAPI = require('../messageOut/callSendAPI')
+
   function handleMessage(message, sender) {
     switch (message.type) {
         case 0: //text
