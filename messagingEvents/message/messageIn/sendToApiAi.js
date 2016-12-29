@@ -1,6 +1,8 @@
+const sendMessage = require('../messageOut/sendMessage')
+
 function sendToApiAi(sender, text) {
 
-    sendTypingOn(sender);
+    sendMessage.sendTypingOn(sender);
     let apiaiRequest = apiAiService.textRequest(text, {
         sessionId: sessionIds.get(sender)
     });
