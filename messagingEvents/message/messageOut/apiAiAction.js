@@ -32,7 +32,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                     sendEmail('New job application', emailContent);
                 }
             }
-            sendTextMessage(sender, responseText)
+            sendMessage.sendTextMessage(sender, responseText)
 
         case "job-inquiry":
             let replies = [{
@@ -48,11 +48,11 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                 "title": "Not interested",
                 "payload": "Not interested"
             }];
-            sendQuickReply(sender, responseText, replies);
+            sendMessage.sendQuickReply(sender, responseText, replies);
             break;
         default:
             //unhandled action, just send back the text
-            sendTextMessage(sender, responseText);
+            sendMessage.sendTextMessage(sender, responseText);
     }
 }
 
