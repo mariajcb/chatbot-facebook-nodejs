@@ -10,7 +10,7 @@ const request = require('request');
 function sendToApiAi(sender, text) {
 
     sendMessage.sendTypingOn(sender);
-    let apiaiRequest = apiAiService.textRequest(text, {
+    let apiaiRequest = apiAiService.apiAiService.textRequest(text, {
         sessionId: apiAiService.sessionIds.get(sender)
     });
 
