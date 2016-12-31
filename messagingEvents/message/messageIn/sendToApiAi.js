@@ -5,13 +5,13 @@ const callSendAPI = require('../messageOut/callSendAPI')
 const config = require('../../../config.js');
 
 const request = require('request');
-// const sessionIds = new Map();
+
 
 function sendToApiAi(sender, text) {
 
     sendMessage.sendTypingOn(sender);
     let apiaiRequest = apiAiService.textRequest(text, {
-        sessionId: sessionIds.get(sender)
+        sessionId: apiAiService.sessionIds.get(sender)
     });
 
     apiaiRequest.on('response', (response) => {
