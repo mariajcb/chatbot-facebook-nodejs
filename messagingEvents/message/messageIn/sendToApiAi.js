@@ -1,3 +1,4 @@
+const apiAiService = require('./apiAiService')
 const sendMessage = require('../messageOut/sendMessage')
 const receivedMessage = require('../receivedMessage')
 const callSendAPI = require('../messageOut/callSendAPI')

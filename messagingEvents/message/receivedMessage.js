@@ -2,6 +2,7 @@ const handleEcho = require('./messageIn/echo')
 const handleQuickReply = require('./messageIn/quickReply')
 const handleMessageAttachments = require('./messageIn/messageAttachments')
 const sendToApiAi = require('./messageIn/sendToApiAi')
+const apiAiService = require('./messageIn/apiAiService')
 const handleApiAiResponse = require('./messageOut/apiAiResponse')
 const handleApiAiAction = require('./messageOut/apiAiAction')
 const callSendAPI = require('./messageOut/callSendAPI')
@@ -13,10 +14,6 @@ const config = require('../../config.js');
 const request = require('request');
 const uuid = require('uuid');
 
-const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
-	language: "en",
-	requestSource: "fb"
-});
 const sessionIds = new Map();
 
 
