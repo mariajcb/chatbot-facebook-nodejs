@@ -9,7 +9,7 @@ function handleApiAiResponse(sender, response) {
     let contexts = response.result.contexts;
     let parameters = response.result.parameters;
 
-    sendTypingOff(sender);
+    sendMessage.sendTypingOff(sender);
 
     if (isDefined(messages) && (messages.length == 1 && messages[0].type != 0 || messages.length > 1)) {
         let timeoutInterval = 1100;
@@ -22,13 +22,13 @@ function handleApiAiResponse(sender, response) {
                 cardTypes.push(messages[i]);
             } else if (previousType == 1 && messages[i].type != 1) {
                 timeout = (i - 1) * timeoutInterval;
-                setTimeout(handleCardMessages.bind(null, cardTypes, sender), timeout);
+                setTimeout(sendMessage.handleCardMessages.bind(null, cardTypes, sender), timeout);
                 cardTypes = [];
                 timeout = i * timeoutInterval;
-                setTimeout(handleMessage.bind(null, messages[i], sender), timeout);
+                setTimeout(sendMessage.handleMessage.bind(null, messages[i], sender), timeout);
             } else {
                 timeout = i * timeoutInterval;
-                setTimeout(handleMessage.bind(null, messages[i], sender), timeout);
+                setTimeout(sendMessage.handleMessage.bind(null, messages[i], sender), timeout);
             }
 
             previousType = messages[i].type;
@@ -37,19 +37,18 @@ function handleApiAiResponse(sender, response) {
     } else if (responseText == '' && !isDefined(action)) {
         //api ai could not evaluate input.
         console.log('Unknown query' + response.result.resolvedQuery);
-        sendTextMessage(sender, "I'm not sure what you want. Can you be more specific?");
+        sendMessage.sendTextMessage(sender, "I'm not sure what you want. Can you be more specific?");
     } else if (isDefined(action)) {
         handleApiAiAction(sender, action, responseText, contexts, parameters);
     } else if (isDefined(responseData) && isDefined(responseData.facebook)) {
         try {
             console.log('Response as formatted message' + responseData.facebook);
-            sendTextMessage(sender, responseData.facebook);
+            sendMessage.sendTextMessage(sender, responseData.facebook);
         } catch (err) {
-            sendTextMessage(sender, err.message);
+            sendMessage.sendTextMessage(sender, err.message);
         }
     } else if (isDefined(responseText)) {
-
-        sendTextMessage(sender, responseText);
+        sendMessage.sendTextMessage(sender, responseText);
     }
 }
 
