@@ -996,17 +996,6 @@ function verifyRequestSignature(req, res, buf) {
 // 	})
 // }
 
-function isDefined(obj) {
-	if (typeof obj == 'undefined') {
-		return false;
-	}
-
-	if (!obj) {
-		return false;
-	}
-
-	return obj != null;
-}
 
 // Spin up the server
 app.listen(app.get('port'), function () {

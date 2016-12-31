@@ -1,3 +1,5 @@
+const isDefined = require('../messageIn/isDefined')
+
 function handleApiAiResponse(sender, response) {
   console.log('HANDLE API RESPONSE IS FIRING');
     let responseText = response.result.fulfillment.speech;
