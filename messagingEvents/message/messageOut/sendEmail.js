@@ -1,3 +1,5 @@
+const config = require('../../../config.js');
+
 function sendEmail(subject, content) {
   console.log('SEND EMAIL IS FIRING');
     var helper = require('sendgrid').mail
