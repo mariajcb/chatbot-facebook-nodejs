@@ -23,7 +23,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                 let job_vacancy = (isDefined(contexts[0].parameters['job-vacancy']) &&
                     contexts[0].parameters['job-vacancy'] != '') ? contexts[0].parameters['job-vacancy'] : '';
 
-                if (phone_number != '' && user_name != '' && previous_job != '' && years_of_experience != '' &&
+                if (phone_number != '' && user_name != '' && current_job != '' && years_of_experience != '' &&
                     job_vacancy != '') {
                     let emailContent = 'A new job inquiry from ' + user_name + ' for the job: ' + job_vacancy +
                         '.<br> Current job position: ' + current_job + '.' +
@@ -31,7 +31,6 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                         '.<br> Phone number: ' + phone_number + '.';
 
                     sendEmail('New job application', emailContent);
-                    console.log('apiAiAction email content', emailContent);
                 }
             }
 
