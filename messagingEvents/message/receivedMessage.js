@@ -14,7 +14,7 @@ const config = require('../../config.js');
 const request = require('request');
 const uuid = require('uuid');
 
-const sessionIds = new Map();
+// const sessionIds = new Map();
 
 //received message from user
 function receivedMessage(event) {

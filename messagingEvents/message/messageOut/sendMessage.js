@@ -3,7 +3,7 @@ const request = require('request');
 const config = require('../../../config.js');
 
 
-  function handleMessage(message, sender) {
+function handleMessage(message, sender) {
     switch (message.type) {
         case 0: //text
             sendTextMessage(sender, message.speech);
@@ -344,18 +344,18 @@ function sendTypingOff(recipientId) {
 
 
 module.exports = {
-  handleMessage,
-  handleCardMessages,
-  sendImageMessage,
-  sendGifMessage,
-  sendAudioMessage,
-  sendVideoMessage,
-  sendFileMessage,
-  sendButtonMessage,
-  sendGenericMessage,
-  sendReceiptMessage,
-  sendQuickReply,
-  sendReadReceipt,
-  sendTypingOn,
-  sendTypingOff
+    handleMessage,
+    handleCardMessages,
+    sendImageMessage,
+    sendGifMessage,
+    sendAudioMessage,
+    sendVideoMessage,
+    sendFileMessage,
+    sendButtonMessage,
+    sendGenericMessage,
+    sendReceiptMessage,
+    sendQuickReply,
+    sendReadReceipt,
+    sendTypingOn,
+    sendTypingOff
 }
