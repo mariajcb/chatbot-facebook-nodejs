@@ -6,7 +6,6 @@ const apiAiService = require('./messageIn/apiAiService')
 const handleApiAiResponse = require('./messageOut/apiAiResponse')
 const handleApiAiAction = require('./messageOut/apiAiAction')
 const callSendAPI = require('./messageOut/callSendAPI')
-const sendEmail = require('./messageOut/sendEmail')
 const sendMessage = require('./messageOut/sendMessage')
 
 const apiai = require('apiai');
@@ -18,7 +17,6 @@ const uuid = require('uuid');
 //received message from user
 function receivedMessage(event) {
   console.log('RECEIVED MESSAGE IS FIRING');
-	console.log('THIS IS SESSIONS IDS', apiAiService.sessionIds);
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
@@ -27,8 +25,8 @@ function receivedMessage(event) {
     if (!apiAiService.sessionIds.has(senderID)) {
         apiAiService.sessionIds.set(senderID, uuid.v1());
     }
-    console.log("Received message for user %d and page %d at %d with message:", senderID, recipientID, timeOfMessage);
-    console.log(JSON.stringify(message));
+    // console.log("Received message for user %d and page %d at %d with message:", senderID, recipientID, timeOfMessage);
+    // console.log(JSON.stringify(message));
 
     var isEcho = message.is_echo;
     var messageId = message.mid;

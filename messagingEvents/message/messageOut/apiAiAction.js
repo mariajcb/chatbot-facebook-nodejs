@@ -31,6 +31,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                         '.<br> Phone number: ' + phone_number + '.';
 
                     sendEmail('New job application', emailContent);
+                    console.log('apiAiAction email content', emailContent);
                 }
             }
 

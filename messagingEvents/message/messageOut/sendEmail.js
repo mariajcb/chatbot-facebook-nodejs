@@ -1,4 +1,5 @@
 function sendEmail(subject, content) {
+  console.log('SEND EMAIL IS FIRING');
     var helper = require('sendgrid').mail
 
     var from_email = new helper.Email(config.EMAIL_FROM)
