@@ -16,7 +16,6 @@ const uuid = require('uuid');
 
 const sessionIds = new Map();
 
-
 //received message from user
 function receivedMessage(event) {
   console.log('RECEIVED MESSAGE IS FIRING');

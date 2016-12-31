@@ -5,6 +5,7 @@ const callSendAPI = require('../messageOut/callSendAPI')
 const config = require('../../../config.js');
 
 const request = require('request');
+const sessionIds = new Map();
 
 function sendToApiAi(sender, text) {
 
