@@ -1,4 +1,5 @@
 const isDefined = require('../messageIn/isDefined')
+const sendMessage = require('./sendMessage')
 
 function handleApiAiResponse(sender, response) {
   console.log('HANDLE API RESPONSE IS FIRING');
