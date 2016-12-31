@@ -1,6 +1,7 @@
 const callSendAPI = require('../messageOut/callSendAPI')
 const request = require('request')
 const config = require('../../../config.js')
+const isDefined = require('../messageIn/isDefined')
 
 function handleMessage(message, sender) {
     switch (message.type) {
