@@ -1,5 +1,6 @@
 const isDefined = require('../messageIn/isDefined')
 const sendMessage = require('./sendMessage')
+const sendEmail = require('./sendEmail')
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
   console.log('HANDLE API ACTION IS FIRING');
@@ -32,6 +33,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                     sendEmail('New job application', emailContent);
                 }
             }
+
             sendMessage.sendTextMessage(sender, responseText)
 
         case "job-inquiry":

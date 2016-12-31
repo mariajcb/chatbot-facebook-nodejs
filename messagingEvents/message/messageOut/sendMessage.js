@@ -344,6 +344,7 @@ function sendTypingOff(recipientId) {
 
 module.exports = {
     handleMessage,
+    sendTextMessage
     handleCardMessages,
     sendImageMessage,
     sendGifMessage,
