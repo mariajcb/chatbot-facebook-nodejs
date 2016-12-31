@@ -19,6 +19,7 @@ const sessionIds = new Map();
 //received message from user
 function receivedMessage(event) {
   console.log('RECEIVED MESSAGE IS FIRING');
+	console.log('THIS IS SESSIONS IDS', sessionIds);
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
