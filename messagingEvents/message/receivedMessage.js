@@ -19,14 +19,14 @@ const uuid = require('uuid');
 //received message from user
 function receivedMessage(event) {
   console.log('RECEIVED MESSAGE IS FIRING');
-	console.log('THIS IS SESSIONS IDS', sessionIds);
+	console.log('THIS IS SESSIONS IDS', apiAiService.sessionIds);
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
     var message = event.message;
 
-    if (!sessionIds.has(senderID)) {
-        sessionIds.set(senderID, uuid.v1());
+    if (!apiAiService.sessionIds.has(senderID)) {
+        apiAiService.sessionIds.set(senderID, uuid.v1());
     }
     console.log("Received message for user %d and page %d at %d with message:", senderID, recipientID, timeOfMessage);
     console.log(JSON.stringify(message));
