@@ -20,6 +20,7 @@ function receivedPostback(event) {
         case 'CHAT':
         //user wants to keep chatting
             sendMessage.sendTextMessage(senderID, "Great!  I'm happy to chat.  Do you have any questions for me?");
+        break;
         default:
         //unindentified payload
             sendMessage.sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
