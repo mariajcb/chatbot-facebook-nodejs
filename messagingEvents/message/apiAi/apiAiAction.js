@@ -45,7 +45,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                 }, {
                     type: "phone_number",
                     title: "Call us",
-                    payload: "(303) 749-0038",
+                    payload: "+13037490038",
                 }, {
                     type: "postback",
                     title: "Keep on chatting",
