@@ -30,13 +30,13 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                         '.<br> Phone number: ' + phone_number + '.';
 
                     sendEmail('New job application', emailContent);
-                    
+
                     sendMessage.sendTypingOn(sender);
                     //ask what user wants to do next
                     setTimeout(function() {
                         let buttons = [{
                             type: "web_url",
-                            url: "https://www.galvanize.com",
+                            url: "https://mjcb-testbot.herokuapp.com/",
                             title: "Go to our website"
                         }, {
                             type: "phone_number",

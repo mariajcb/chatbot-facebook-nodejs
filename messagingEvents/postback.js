@@ -1,4 +1,5 @@
 const sendMessage = require('./message/sendMessage')
+const sendToApiAi = require('./message/apiAi/sendToApiAi')
 
 /*
  * Postback Event
@@ -17,6 +18,9 @@ function receivedPostback(event) {
     var payload = event.postback.payload;
 
     switch (payload) {
+        case 'JOB_APPLY':
+            sendToApiAi(senderID, "job openings");
+        break;
         case 'CHAT':
         //user wants to keep chatting
             sendMessage.sendTextMessage(senderID, "Great!  I'm happy to chat.  Do you have any questions for me?");
