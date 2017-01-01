@@ -3,7 +3,7 @@ const sendMessage = require('../sendMessage')
 const sendEmail = require('../sendEmail')
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
-  console.log('HANDLE API ACTION IS FIRING');
+    console.log('HANDLE API ACTION IS FIRING');
     switch (action) {
         case "detailed-application":
             if (isDefined(contexts[0]) && contexts[0].name == 'job_application' && contexts[0].parameters) {
@@ -34,8 +34,29 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             }
 
             sendMessage.sendTextMessage(sender, responseText)
+            sendMessage.sendTypingOn(sender);
+
+            //ask what user wants to do next
+            setTimeout(function() {
+                let buttons = [{
+                    type: "web_url",
+                    url: "https://galvanize.com",
+                    title: "Go to our website"
+                }, {
+                    type: "phone_number",
+                    title: "Call us",
+                    payload: "(303) 749-0038",
+                }, {
+                    type: "postback",
+                    title: "Keep on chatting",
+                    payload: "CHAT"
+                }];
+
+                sendMessage.sendButtonMessage(sender, "What would you like to do next?", buttons);
+            }, 3000)
+
             break;
-            
+
         case "job-inquiry":
             let replies = [{
                 "content_type": "text",

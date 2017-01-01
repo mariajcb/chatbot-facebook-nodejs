@@ -1,3 +1,5 @@
+const sendMessage = require('./message/sendMessage')
+
 /*
  * Postback Event
  *
@@ -15,9 +17,12 @@ function receivedPostback(event) {
     var payload = event.postback.payload;
 
     switch (payload) {
+        case 'CHAT':
+        //user wants to keep chatting
+            sendMessage.sendTextMessage(senderID, "Great!  I'm happy to chat.  Do you have any questions for me?");
         default:
         //unindentified payload
-            sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
+            sendMessage.sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
         break;
 
     }

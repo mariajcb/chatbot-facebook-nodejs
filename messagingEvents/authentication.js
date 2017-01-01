@@ -1,3 +1,4 @@
+const sendMessage = require('./message/sendMessage')
 /*
  * Authentication Event
  *
@@ -24,7 +25,7 @@ function receivedAuthentication(event) {
 
 	// When an authentication is received, we'll send a message back to the sender
 	// to let them know it was successful.
-	sendTextMessage(senderID, "Authentication successful");
+	sendMessage.sendTextMessage(senderID, "Authentication successful");
 }
 
 module.exports = receivedAuthentication;
