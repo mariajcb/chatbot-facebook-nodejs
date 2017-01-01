@@ -1,7 +1,7 @@
-const callSendAPI = require('../messageOut/callSendAPI')
+const callSendAPI = require('./apiAi/callSendAPI')
 const request = require('request')
-const config = require('../../../config.js')
-const isDefined = require('../messageIn/isDefined')
+const config = require('../../config.js')
+const isDefined = require('./isDefined')
 
 function handleMessage(message, sender) {
     switch (message.type) {

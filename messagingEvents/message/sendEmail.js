@@ -1,4 +1,4 @@
-const config = require('../../../config.js');
+const config = require('../../config.js');
 
 function sendEmail(subject, content) {
     var helper = require('sendgrid').mail

@@ -1,6 +1,6 @@
-const isDefined = require('../messageIn/isDefined')
-const sendMessage = require('./sendMessage')
-const sendEmail = require('./sendEmail')
+const isDefined = require('../isDefined')
+const sendMessage = require('../sendMessage')
+const sendEmail = require('../sendEmail')
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
   console.log('HANDLE API ACTION IS FIRING');

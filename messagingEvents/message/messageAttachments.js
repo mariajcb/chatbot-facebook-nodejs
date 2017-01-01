@@ -1,4 +1,4 @@
-const sendMessage = require('../messageOut/sendMessage')
+const sendMessage = require('./sendMessage')
 
 function handleMessageAttachments(messageAttachments, senderID) {
     //for now just reply

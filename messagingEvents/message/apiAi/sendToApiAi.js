@@ -1,8 +1,8 @@
 const apiAiService = require('./apiAiService')
-const isDefined = require('./isDefined')
-const sendMessage = require('../messageOut/sendMessage')
+const isDefined = require('../isDefined')
+const handleApiAiResponse = require('./apiAiResponse')
+const sendMessage = require('../sendMessage')
 const receivedMessage = require('../receivedMessage')
-const handleApiAiResponse = require('../messageOut/apiAiResponse')
 
 const config = require('../../../config.js');
 

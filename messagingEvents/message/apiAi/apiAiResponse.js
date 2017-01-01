@@ -1,5 +1,5 @@
-const isDefined = require('../messageIn/isDefined')
-const sendMessage = require('./sendMessage')
+const isDefined = require('../isDefined')
+const sendMessage = require('../sendMessage')
 const handleApiAiAction = require('./apiAiAction')
 
 function handleApiAiResponse(sender, response) {

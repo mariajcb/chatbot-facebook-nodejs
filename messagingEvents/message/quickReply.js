@@ -1,4 +1,4 @@
-const sendToApiAi = require('./sendToApiAi')
+const sendToApiAi = require('./apiAi/sendToApiAi')
 
 function handleQuickReply(senderID, quickReply, messageId) {
     var quickReplyPayload = quickReply.payload;
