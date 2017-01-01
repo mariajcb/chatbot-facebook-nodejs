@@ -34,7 +34,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             }
 
             sendMessage.sendTextMessage(sender, responseText)
-
+            break;
+            
         case "job-inquiry":
             let replies = [{
                 "content_type": "text",
