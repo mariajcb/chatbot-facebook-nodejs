@@ -30,30 +30,30 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                         '.<br> Phone number: ' + phone_number + '.';
 
                     sendEmail('New job application', emailContent);
+                    
+                    sendMessage.sendTypingOn(sender);
+                    //ask what user wants to do next
+                    setTimeout(function() {
+                        let buttons = [{
+                            type: "web_url",
+                            url: "https://www.galvanize.com",
+                            title: "Go to our website"
+                        }, {
+                            type: "phone_number",
+                            title: "Call us",
+                            payload: "+13037490038",
+                        }, {
+                            type: "postback",
+                            title: "Keep on chatting",
+                            payload: "CHAT"
+                        }];
+
+                        sendMessage.sendButtonMessage(sender, "What would you like to do next?", buttons);
+                    }, 3000)
                 }
             }
 
             sendMessage.sendTextMessage(sender, responseText)
-            sendMessage.sendTypingOn(sender);
-
-            //ask what user wants to do next
-            setTimeout(function() {
-                let buttons = [{
-                    type: "web_url",
-                    url: "https://galvanize.com",
-                    title: "Go to our website"
-                }, {
-                    type: "phone_number",
-                    title: "Call us",
-                    payload: "+13037490038",
-                }, {
-                    type: "postback",
-                    title: "Keep on chatting",
-                    payload: "CHAT"
-                }];
-
-                sendMessage.sendButtonMessage(sender, "What would you like to do next?", buttons);
-            }, 3000)
 
             break;
 
