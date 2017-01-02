@@ -27,7 +27,7 @@ function receivedPostback(event) {
         break;
         default:
         //unindentified payload
-            sendMessage.sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
+            sendMessage.sendTextMessage(senderID, "2-I'm not sure what you want. Can you be more specific?");
         break;
 
     }

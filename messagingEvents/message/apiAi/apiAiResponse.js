@@ -1,7 +1,6 @@
 const isDefined = require('../isDefined')
 const sendMessage = require('../sendMessage')
 const handleApiAiAction = require('./apiAiAction')
-const postback = require('../../postback')
 
 function handleApiAiResponse(sender, response) {
   console.log('HANDLE API RESPONSE IS FIRING');
@@ -40,7 +39,7 @@ function handleApiAiResponse(sender, response) {
     } else if (responseText == '' && !isDefined(action)) {
         //api ai could not evaluate input.
         console.log('Unknown query' + response.result.resolvedQuery);
-        sendMessage.sendTextMessage(sender, "I'm not sure what you want. Can you be more specific?");
+        sendMessage.sendTextMessage(sender, "1 - I'm not sure what you want. Can you be more specific?");
     } else if (isDefined(action)) {
         handleApiAiAction(sender, action, responseText, contexts, parameters);
     } else if (isDefined(responseData) && isDefined(responseData.facebook)) {
