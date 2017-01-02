@@ -7,6 +7,7 @@ const config = require('../../../config.js');
  *
  */
 function callSendAPI(messageData) {
+  console.log('CALL SENDAPI IS FIRING');
     request({
         uri: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
