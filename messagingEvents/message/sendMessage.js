@@ -342,6 +342,65 @@ function sendTypingOff(recipientId) {
     callSendAPI(messageData);
 }
 
+/*
+ * Send a message with the account linking call-to-action
+ *
+ */
+function sendAccountLinking(recipientId) {
+	var messageData = {
+		recipient: {
+			id: recipientId
+		},
+		message: {
+			attachment: {
+				type: "template",
+				payload: {
+					template_type: "button",
+					text: "Welcome. Please link your account.",
+					buttons: [{
+						type: "account_link",
+						url: config.SERVER_URL + "/authorize"
+          }]
+				}
+			}
+		}
+	};
+
+	callSendAPI(messageData);
+}
+
+
+function greetUserText(userId) {
+	//first read user firstname
+	request({
+		uri: 'https://graph.facebook.com/v2.7/' + userId,
+		qs: {
+			access_token: config.FB_PAGE_TOKEN
+		}
+
+	}, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+
+			var user = JSON.parse(body);
+			console.log("getUserData:" + user);
+			if (user.first_name) {
+				console.log("FB user: %s %s, %s",
+					user.first_name, user.last_name, user.gender);
+
+				sendTextMessage(userId, `Welcome ${user.first_name}!  I am a legal assistant chatbot.
+        I cannot give you legal advice, but I can take down your information and pass it on to an attorney.
+        I can also answer frequently asked questions.  What can I help you with?`);
+			} else {
+				console.log("Cannot get data for fb user with id",
+					userId);
+			}
+		} else {
+			console.error(response.error);
+		}
+
+	});
+}
+
 
 module.exports = {
     handleMessage,
@@ -358,5 +417,7 @@ module.exports = {
     sendQuickReply,
     sendReadReceipt,
     sendTypingOn,
-    sendTypingOff
+    sendTypingOff,
+    sendAccountLinking,
+    greetUserText
 }

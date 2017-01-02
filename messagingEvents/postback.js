@@ -18,8 +18,10 @@ function receivedPostback(event) {
     var payload = event.postback.payload;
 
     switch (payload) {
+        case 'GET STARTED':
+            sendMessage.greetUserText(senderID);
+        break;
         case 'JOB_APPLY':
-        console.log('POSTBACK SENDERID', senderID);
             sendToApiAi(senderID, "job openings");
         break;
         case 'CHAT':
