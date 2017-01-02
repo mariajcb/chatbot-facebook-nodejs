@@ -1,6 +1,5 @@
 const sendMessage = require('./message/sendMessage')
 const sendToApiAi = require('./message/apiAi/sendToApiAi')
-// const apiAiService = require('./message/apiAi/apiAiService')
 
 /*
  * Postback Event
@@ -20,6 +19,7 @@ function receivedPostback(event) {
 
     switch (payload) {
         case 'JOB_APPLY':
+        console.log('trying to log sendToApiAi', sendToApiAi);
             sendToApiAi(senderID, "job openings");
         break;
         case 'CHAT':
