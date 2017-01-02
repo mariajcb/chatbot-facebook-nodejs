@@ -18,7 +18,7 @@ function receivedPostback(event) {
     var payload = event.postback.payload;
 
     switch (payload) {
-        case 'GET STARTED':
+        case 'GET_STARTED':
             sendMessage.greetUserText(senderID);
         break;
         case 'JOB_APPLY':
