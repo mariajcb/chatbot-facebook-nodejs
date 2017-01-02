@@ -1,6 +1,6 @@
 const sendMessage = require('./message/sendMessage')
 const sendToApiAi = require('./message/apiAi/sendToApiAi')
-const apiAiService = require('./message/apiAi/apiAiService')
+// const apiAiService = require('./message/apiAi/apiAiService')
 
 /*
  * Postback Event

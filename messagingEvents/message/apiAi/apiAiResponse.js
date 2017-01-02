@@ -1,6 +1,7 @@
 const isDefined = require('../isDefined')
 const sendMessage = require('../sendMessage')
 const handleApiAiAction = require('./apiAiAction')
+const postback = require('../../postback')
 
 function handleApiAiResponse(sender, response) {
   console.log('HANDLE API RESPONSE IS FIRING');
