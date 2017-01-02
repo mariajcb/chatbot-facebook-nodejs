@@ -24,6 +24,8 @@ function receivedPostback(event) {
         case 'JOB_APPLY':
             sendToApiAi(senderID, "job openings");
         break;
+        case 'WEATHER':
+            sendToApiAi(senderID, "weather");
         case 'CHAT':
         //user wants to keep chatting
             sendMessage.sendTextMessage(senderID, "Great!  I'm happy to chat.  Do you have any questions for me?");
