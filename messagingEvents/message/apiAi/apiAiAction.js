@@ -13,13 +13,14 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                     url: 'http://api.openweathermap.org/data/2.5/weather', //URL to hit
                     qs: {
                         appid: config.WEATHER_API_KEY,
-                        q: parameters["geo-city"]
+                        q: parameters["geo-city"],
+                        units: 'imperial'
                     }, //Query string data
                 }, function(error, response, body) {
                     if (!error && response.statusCode == 200) {
                         let weather = JSON.parse(body);
                         if (weather.hasOwnProperty("weather")) {
-                            let reply = `${responseText} ${weather["weather"][0]["description"]}`;
+                            let reply = `${responseText} ${weather["main"]["temp"]}`;
                             sendMessage.sendTextMessage(sender, reply);
                         } else {
                             sendMessage.sendTextMessage(sender,
