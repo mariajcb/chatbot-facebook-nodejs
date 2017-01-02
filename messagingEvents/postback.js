@@ -19,7 +19,6 @@ function receivedPostback(event) {
 
     switch (payload) {
         case 'JOB_APPLY':
-        console.log('trying to log sendToApiAi', sendToApiAi);
             sendToApiAi(senderID, "job openings");
         break;
         case 'CHAT':
