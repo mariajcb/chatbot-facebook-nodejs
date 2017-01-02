@@ -13,8 +13,6 @@ const config = require('../../config.js');
 const request = require('request');
 const uuid = require('uuid');
 
-const postback = require('../postback')
-
 //received message from user
 function receivedMessage(event) {
   console.log('RECEIVED MESSAGE IS FIRING');
