@@ -3,7 +3,7 @@ const isDefined = require('../isDefined')
 const handleApiAiResponse = require('./apiAiResponse')
 const sendMessage = require('../sendMessage')
 const receivedMessage = require('../receivedMessage')
-const receivedPostback = require('../../postback')
+// const receivedPostback = require('../../postback')
 
 const config = require('../../../config.js');
 

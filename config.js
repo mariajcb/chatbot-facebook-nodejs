@@ -6,5 +6,6 @@ module.exports = {
     SERVER_URL: 'https://mjcb-testbot.herokuapp.com/',
     SENDGRID_API_KEY: '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',
     EMAIL_FROM: 'bogomazm@gmail.com',
-    EMAIL_TO: 'bogomazm@gmail.com'
+    EMAIL_TO: 'bogomazm@gmail.com',
+    WEATHER_API_KEY: '73cc5680c53431ce57e65080940fd050'
 };

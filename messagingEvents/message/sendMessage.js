@@ -387,9 +387,11 @@ function greetUserText(userId) {
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
 
-				sendTextMessage(userId, `Welcome ${user.first_name}!  I am a legal assistant chatbot.
+				sendTextMessage(userId, `
+        Welcome ${user.first_name}!  I am a legal assistant chatbot.
         I cannot give you legal advice, but I can take down your information and pass it on to an attorney.
-        I can also answer frequently asked questions.  What can I help you with?`);
+        I can also tell you the weather, in case you're wondering if you need to bring an umbrella for your appointment!  
+        What can I help you with?`);
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
