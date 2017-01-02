@@ -20,6 +20,7 @@ function receivedPostback(event) {
 
     switch (payload) {
         case 'JOB_APPLY':
+        console.log('POSTBACK SENDERID', senderID);
             sendToApiAi(senderID, "job openings");
         break;
         case 'CHAT':
