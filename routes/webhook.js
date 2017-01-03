@@ -33,7 +33,7 @@ router.get('/webhook/', function(req, res) {
 router.post('/webhook/', function(req, res) {
     var data = req.body;
     console.log(JSON.stringify(data));
-
+    console.log('THIS IS REQUEST', req);
     // Make sure this is a page subscription
     if (data.object == 'page') {
         // Iterate over each entry
