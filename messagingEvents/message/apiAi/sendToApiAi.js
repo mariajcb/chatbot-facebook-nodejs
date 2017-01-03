@@ -12,6 +12,11 @@ const request = require('request');
 function sendToApiAi(sender, text) {
   console.log('SENDTOAPIAI IS FIRING');
     sendMessage.sendTypingOn(sender);
+
+    if (!apiAiService.sessionIds.has(sender)) {
+        apiAiService.sessionIds.set(sender, uuid.v1());
+    }
+
     let apiaiRequest = apiAiService.apiAiService.textRequest(text, {
         sessionId: apiAiService.sessionIds.get(sender)
     });
