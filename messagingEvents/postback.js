@@ -32,7 +32,7 @@ function receivedPostback(event) {
         break;
         default:
         //unindentified payload
-            sendMessage.sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
+            sendMessage.sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?  You can also click on the menu to the left of the chat box.");
         break;
 
     }

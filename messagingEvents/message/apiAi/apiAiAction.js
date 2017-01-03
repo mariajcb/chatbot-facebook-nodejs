@@ -2,7 +2,7 @@ const isDefined = require('../isDefined')
 const sendMessage = require('../sendMessage')
 const sendEmail = require('../sendEmail')
 const config = require('../../../config.js')
-const receivedPostback = require('../../postback')
+// const receivedPostback = require('../../postback')
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
     console.log('HANDLE API ACTION IS FIRING');
