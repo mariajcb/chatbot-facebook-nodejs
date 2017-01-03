@@ -26,6 +26,7 @@ function receivedPostback(event) {
         break;
         case 'WEATHER':
             sendToApiAi(senderID, "weather");
+        break;
         case 'CHAT':
         //user wants to keep chatting
             sendMessage.sendTextMessage(senderID, "Great!  I'm happy to chat.  Do you have any questions for me?");
